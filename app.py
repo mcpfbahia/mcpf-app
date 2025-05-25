@@ -1,12 +1,9 @@
 import streamlit as st
 import pandas as pd
-import locale
 
-# Configura moeda brasileira
-locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
-
+# Função para formatar moeda brasileira
 def formatar_moeda(valor):
-    return locale.currency(valor, grouping=True)
+    return f"R$ {valor:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.')
 
 # Carrega a planilha processada
 df = pd.read_excel('mcpf_formacao_preco_processada.xlsx')
